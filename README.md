@@ -6,4 +6,4 @@ Code was written with Typescript, added ESLint and Prettier setup for code linti
 Also used Redux and React Hooks.
 User interface was built with styled-components.
 
-Project link: https://blog-roan-two.vercel.app/posts
+Project link: https://blog-roan-two.vercel.app

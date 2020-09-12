@@ -13,9 +13,14 @@ const PostForm = ({ handleSubmit, titleToEdit, bodyToEdit }: IPostFormProps): JS
 
     const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
-        handleSubmit(title, body);
-        setTitle('');
-        setBody('');
+
+        if (title && body) {
+            handleSubmit(title, body);
+            setTitle('');
+            setBody('');
+        }
+
+        if (!title || !body) alert('Please fill in all fields before submitting');
     };
 
     return (

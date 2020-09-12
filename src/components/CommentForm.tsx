@@ -18,8 +18,11 @@ const CommentForm = ({ onSubmitComment }: ICommentForm): JSX.Element => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
-        onSubmitComment(comment);
-        setComment('');
+
+        if (comment) {
+            onSubmitComment(comment);
+            setComment('');
+        } else alert('Please add a comment');
     };
 
     return (

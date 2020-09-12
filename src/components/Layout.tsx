@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { AppLink } from './AppLink';
-import { ReactElement } from 'react';
 
 const Nav = styled.nav`
     position: fixed;
@@ -29,7 +28,7 @@ const Container = styled.div`
 `;
 
 interface ILayout {
-    children: ReactElement;
+    children: JSX.Element;
 }
 
 const Layout = ({ children }: ILayout): JSX.Element => {

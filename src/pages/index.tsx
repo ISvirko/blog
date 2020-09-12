@@ -3,7 +3,6 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppLink } from '../components/AppLink';
 import PostListItem from '../components/PostListItem';
 import { IPost } from '../interfaces/IPost';
 import { loadPosts } from '../redux/postsOperations';

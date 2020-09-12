@@ -25,7 +25,7 @@ export const StyledTextarea = styled.textarea`
 export const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
-    margin: 40px auto;
+    margin: 130px auto 50px;
     width: 800px;
 `;
 

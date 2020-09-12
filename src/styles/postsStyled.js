@@ -12,7 +12,7 @@ export const StyledLink = styled.a`
 `;
 
 export const StyledCard = styled.div`
-    width: max-content;
+    width: 300px;
     height: max-content;
     padding: 20px;
     display: flex;
@@ -28,13 +28,6 @@ export const Title = styled.h2`
     text-transform: uppercase;
     font-size: 30px;
     line-height: 60px;
-`;
-
-export const Container = styled.div`
-    margin: 0 auto;
-    width: 1000px;
-    padding: 0;
-    margin: 0;
 `;
 
 export const List = styled.ul`

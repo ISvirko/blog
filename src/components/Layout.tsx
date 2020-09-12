@@ -16,6 +16,7 @@ const Layout = ({ children }: ILayout): JSX.Element => {
                     <AppLink href={'/post/new'} name="Create Post" />
                 </NavContainer>
             </Nav>
+
             <Container>{children}</Container>
         </>
     );

@@ -3,21 +3,13 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Header from '../components/Header';
 import PostListItem from '../components/PostListItem';
 import { IPost } from '../interfaces/IPost';
 import { loadPosts } from '../redux/postsOperations';
 import { selectPosts } from '../redux/postsSelectors';
 import { AppDispatch } from '../redux/store';
-import {
-    About,
-    Background,
-    Container,
-    Overlay,
-    PostsContainer,
-    Title,
-    StyledLink,
-    LinkWrapper,
-} from '../styles/indexStyled';
+import { Container, PostsContainer, StyledLink, LinkWrapper } from '../styles/indexStyled';
 
 interface PostsProps {
     serverPosts: IPost[] | null;
@@ -45,24 +37,21 @@ const HomePage = ({ serverPosts }: PostsProps): JSX.Element => {
     const reversedPosts = postsToDisplay && [...postsToDisplay].reverse().splice(0, 3);
 
     return (
-        <Background>
-            <Overlay>
-                <Container>
-                    <Title>Lorem Ipsum Blog</Title>
-                    <About>Phasellus consectetuer vestibulum elit.</About>
-                    <PostsContainer>
-                        {reversedPosts.map((post) => (
-                            <PostListItem key={post.id} post={post} />
-                        ))}
-                    </PostsContainer>
-                    <LinkWrapper>
-                        <Link href="/posts">
-                            <StyledLink>Read more</StyledLink>
-                        </Link>
-                    </LinkWrapper>
-                </Container>
-            </Overlay>
-        </Background>
+        <>
+            <Header />
+            <Container>
+                <PostsContainer>
+                    {reversedPosts.map((post) => (
+                        <PostListItem key={post.id} post={post} />
+                    ))}
+                </PostsContainer>
+                <LinkWrapper>
+                    <Link href="/posts">
+                        <StyledLink>Read more</StyledLink>
+                    </Link>
+                </LinkWrapper>
+            </Container>
+        </>
     );
 };
 

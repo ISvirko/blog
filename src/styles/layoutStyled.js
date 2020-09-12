@@ -4,7 +4,7 @@ export const Nav = styled.nav`
     position: fixed;
     left: 0;
     right: 0;
-    background: ${(props) => props.theme.primaryDark};
+    background: ${({ theme }) => theme.primaryDark};
     top: 0;
 `;
 
@@ -20,7 +20,7 @@ export const NavContainer = styled.nav`
 export const Container = styled.div`
     width: 100%;
     margin-top: 80px;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
+    // display: flex;
+    // justify-content: center;
+    padding-bottom: 50px;
 `;

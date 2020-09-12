@@ -7,8 +7,9 @@ import { loadPosts } from '../redux/postsOperations';
 import { selectPosts } from '../redux/postsSelectors';
 import axios from 'axios';
 import { IPost } from '../interfaces/IPost';
-import { Container, List, Title } from '../styles/postsStyled';
+import { List, Title } from '../styles/postsStyled';
 import PostListItem from '../components/PostListItem';
+import { Container } from '../styles/indexStyled';
 
 interface PostsProps {
     serverPosts: IPost[] | null;

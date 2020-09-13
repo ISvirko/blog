@@ -4,10 +4,10 @@ import { Router } from 'next/router';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
 import axios from 'axios';
-import Nprogress from 'nprogress';
 import { ThemeProvider } from 'styled-components';
-import Layout from '../components/Layout';
+import Nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
+import Layout from '../components/Layout';
 import '../styles/globals.css';
 
 axios.defaults.baseURL = 'https://simple-blog-api.crew.red';

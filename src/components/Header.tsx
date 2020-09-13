@@ -21,16 +21,14 @@ const Overlay = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
 `;
 
-export const Title = styled.h1`
+const Title = styled.h1`
     color: #fff;
     font-size: 60px;
-    margin-top: 60px;
 `;
 
 const About = styled.p`
     color: #fff;
     font-size: 30px;
-    margin-bottom: 30px;
 `;
 
 const Header = (): JSX.Element => {

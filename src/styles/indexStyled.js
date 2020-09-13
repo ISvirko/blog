@@ -8,7 +8,6 @@ export const Container = styled.div`
 export const PostsContainer = styled.div`
     display: flex;
     justify-content: space-around;
-    margin-bottom: 30px;
 `;
 
 export const StyledLink = styled.a`
@@ -24,4 +23,5 @@ export const StyledLink = styled.a`
 export const LinkWrapper = styled.div`
     display: flex;
     justify-content: center;
+    margin-top: 40px;
 `;

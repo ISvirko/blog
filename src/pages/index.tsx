@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../components/Header';
-import PostListItem from '../components/PostListItem';
+import PostCard from '../components/PostCard';
 import { IPost } from '../interfaces/IPost';
 import { loadPosts } from '../redux/postsOperations';
 import { selectPosts } from '../redux/postsSelectors';
@@ -42,7 +42,7 @@ const HomePage = ({ serverPosts }: PostsProps): JSX.Element => {
             <Container>
                 <PostsContainer>
                     {reversedPosts.map((post) => (
-                        <PostListItem key={post.id} post={post} />
+                        <PostCard key={post.id} post={post} />
                     ))}
                 </PostsContainer>
                 <LinkWrapper>

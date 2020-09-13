@@ -1,5 +1,6 @@
-import { StyledButton, StyledForm, StyledInput, StyledTextarea } from '../styles/postFormStyled';
+import { ButtonsContainer, StyledButton, StyledForm, StyledInput, StyledTextarea } from '../styles/FormStyled';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 interface IPostFormProps {
     titleToEdit?: string;
@@ -10,6 +11,7 @@ interface IPostFormProps {
 const PostForm = ({ handleSubmit, titleToEdit, bodyToEdit }: IPostFormProps): JSX.Element => {
     const [title, setTitle] = useState(titleToEdit ? titleToEdit : '');
     const [body, setBody] = useState(bodyToEdit ? bodyToEdit : '');
+    const [closeForm, setCloseForm] = useState(false);
 
     const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
@@ -20,7 +22,14 @@ const PostForm = ({ handleSubmit, titleToEdit, bodyToEdit }: IPostFormProps): JS
             setBody('');
         }
 
-        if (!title || !body) alert('Please fill in all fields before submitting');
+        if ((!title || !body) && !closeForm) alert('Please fill in all fields before submitting');
+    };
+
+    const router = useRouter();
+
+    const handleCancel = () => {
+        setCloseForm(true);
+        router.push('/posts');
     };
 
     return (
@@ -39,7 +48,12 @@ const PostForm = ({ handleSubmit, titleToEdit, bodyToEdit }: IPostFormProps): JS
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBody(e.target.value)}
             />
 
-            <StyledButton type="submit">{titleToEdit || bodyToEdit ? 'Save' : 'Add post'}</StyledButton>
+            <ButtonsContainer>
+                <StyledButton type="submit">{titleToEdit || bodyToEdit ? 'Save' : 'Add post'}</StyledButton>
+                <StyledButton type="button" onClick={handleCancel}>
+                    Cancel
+                </StyledButton>
+            </ButtonsContainer>
         </StyledForm>
     );
 };

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectOnePost } from '../../redux/postsSelectors';
 import axios from 'axios';
 import { addComment, deletePost, editPost, getPostById } from '../../redux/postsOperations';
-import { StyledButton } from '../../styles/postFormStyled';
+import { StyledButton } from '../../styles/FormStyled';
 import PostForm from '../../components/PostForm';
 import CommentForm from '../../components/CommentForm';
 import { IPost } from '../../interfaces/IPost';
@@ -100,7 +100,13 @@ const Post = ({ serverPost }: PostProps): JSX.Element => {
             </ButtonsContainer>
 
             <PostContainer>
-                <Image src={images[postToDisplay.id - 1]} alt={postToDisplay.title} />
+                <Image
+                    src={
+                        images[postToDisplay.id - 1] ||
+                        'https://waterfrontventures.co/wp-content/uploads/2017/07/dummy.jpg'
+                    }
+                    alt={postToDisplay.title}
+                />
                 <Block>
                     <h1>{postToDisplay.title}</h1>
                     <p>{postToDisplay.body}</p>
@@ -108,7 +114,7 @@ const Post = ({ serverPost }: PostProps): JSX.Element => {
             </PostContainer>
 
             {commented ? (
-                <CommentForm onSubmitComment={handleSubmitComment} />
+                <CommentForm onSubmitComment={handleSubmitComment} setCommented={setCommented} />
             ) : (
                 <StyledButton onClick={handleAddComment}>Comment on Post</StyledButton>
             )}

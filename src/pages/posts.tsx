@@ -7,9 +7,23 @@ import { loadPosts } from '../redux/postsOperations';
 import { selectPosts } from '../redux/postsSelectors';
 import axios from 'axios';
 import { IPost } from '../interfaces/IPost';
-import { List, Title } from '../styles/postsStyled';
-import PostListItem from '../components/PostListItem';
+import styled from 'styled-components';
 import { Container } from '../styles/indexStyled';
+import PostListItem from '../components/PostListItem';
+
+export const Title = styled.h2`
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: 80px;
+    margin-top: 100px;
+`;
+
+export const List = styled.ul`
+    // display: grid;
+    // grid-template-columns: repeat(3, 2fr);
+    // grid-gap: 20px;
+`;
 
 interface PostsProps {
     serverPosts: IPost[] | null;

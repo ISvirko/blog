@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const PostFormContainer = styled.div`
+    margin-top: 130px;
+`;
+
 export const StyledButton = styled.button`
     background-color: ${({ theme }) => theme.secondaryLight};
     color: ${({ theme }) => theme.primaryLight};
@@ -25,7 +29,7 @@ export const StyledTextarea = styled.textarea`
 export const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
-    margin: 130px auto 50px;
+    margin: 50px auto;
     width: 800px;
 `;
 
@@ -35,4 +39,14 @@ export const StyledInput = styled.input`
     border: 1px solid ${({ theme }) => theme.grey};
     outline: none;
     border-radius: 4px;
+`;
+
+export const ButtonsContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 4px;
+    width: 250px;
+    margin: 0 auto;
 `;

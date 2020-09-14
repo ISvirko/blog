@@ -1,7 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import * as R from 'ramda';
 import { loadPosts, addPost, editPost, deletePost, getPostById, addComment } from './postsOperations';
 import { IPost } from '../interfaces/IPost';
 import { IComment } from '../interfaces/IComment';
+
+const findItemById = (id) => (item) => item.id === id;
 
 interface GenericState {
     posts: IPost[];
@@ -54,7 +57,7 @@ const postsSlice = createSlice({
         });
 
         builder.addCase(addPost.fulfilled, (state: GenericState, { payload }: PayloadAction<IPost>) => {
-            state.posts = [...state.posts, payload];
+            state.posts = R.append(payload, state);
             state.loading = false;
         });
 
@@ -88,7 +91,7 @@ const postsSlice = createSlice({
         });
 
         builder.addCase(editPost.fulfilled, (state: GenericState, { payload }: PayloadAction<IPost>) => {
-            state.post = payload;
+            state.post = { ...state.post, title: payload.title, body: payload.body };
             state.loading = false;
         });
 
@@ -105,7 +108,7 @@ const postsSlice = createSlice({
         });
 
         builder.addCase(deletePost.fulfilled, (state: GenericState, { payload }: PayloadAction<string>) => {
-            state.posts = state.posts.filter((post) => post.id.toString() !== payload);
+            state.posts = R.reject(findItemById(payload));
             state.loading = false;
         });
 
@@ -122,7 +125,7 @@ const postsSlice = createSlice({
         });
 
         builder.addCase(addComment.fulfilled, (state: GenericState, { payload }: PayloadAction<IComment>) => {
-            state.post.comments = [...state.post.comments, payload];
+            state.post.comments = R.append(payload, state.post.comments);
             state.loading = false;
         });
 

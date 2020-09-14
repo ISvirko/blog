@@ -36,12 +36,6 @@ const Post = ({ serverPost }: PostProps): JSX.Element => {
 
     const dispatch: AppDispatch = useDispatch();
 
-    const { post } = useSelector(selectOnePost);
-
-    useEffect(() => {
-        post && setPostToDisplay(post);
-    }, [post]);
-
     useEffect(() => {
         const loadData = async () => {
             await dispatch(getPostById(query.postId.toString()));
@@ -49,6 +43,12 @@ const Post = ({ serverPost }: PostProps): JSX.Element => {
 
         loadData();
     }, []);
+
+    const { post } = useSelector(selectOnePost);
+
+    useEffect(() => {
+        post && setPostToDisplay(post);
+    }, [post]);
 
     const handleDelete = async () => {
         await dispatch(deletePost(postToDisplay.id.toString()));

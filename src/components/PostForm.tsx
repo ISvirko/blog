@@ -1,4 +1,11 @@
-import { ButtonsContainer, StyledButton, StyledForm, StyledInput, StyledTextarea } from '../styles/FormStyled';
+import {
+    ButtonsContainer,
+    PostFormContainer,
+    StyledButton,
+    StyledForm,
+    StyledInput,
+    StyledTextarea,
+} from '../styles/FormStyled';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -25,36 +32,38 @@ const PostForm = ({ handleSubmit, titleToEdit, bodyToEdit }: IPostFormProps): JS
         if ((!title || !body) && !closeForm) alert('Please fill in all fields before submitting');
     };
 
-    const router = useRouter();
+    const { push } = useRouter();
 
     const handleCancel = () => {
         setCloseForm(true);
-        router.push('/posts');
+        push('/posts');
     };
 
     return (
-        <StyledForm onSubmit={handleFormSubmit}>
-            <StyledInput
-                name="title"
-                placeholder="Title"
-                value={title}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
-            />
-            <StyledTextarea
-                name="body"
-                placeholder="Body"
-                rows={5}
-                value={body}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBody(e.target.value)}
-            />
+        <PostFormContainer>
+            <StyledForm onSubmit={handleFormSubmit}>
+                <StyledInput
+                    name="title"
+                    placeholder="Title"
+                    value={title}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
+                />
+                <StyledTextarea
+                    name="body"
+                    placeholder="Body"
+                    rows={5}
+                    value={body}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBody(e.target.value)}
+                />
 
-            <ButtonsContainer>
-                <StyledButton type="submit">{titleToEdit || bodyToEdit ? 'Save' : 'Add post'}</StyledButton>
-                <StyledButton type="button" onClick={handleCancel}>
-                    Cancel
-                </StyledButton>
-            </ButtonsContainer>
-        </StyledForm>
+                <ButtonsContainer>
+                    <StyledButton type="submit">{titleToEdit || bodyToEdit ? 'Save' : 'Add post'}</StyledButton>
+                    <StyledButton type="button" onClick={handleCancel}>
+                        Cancel
+                    </StyledButton>
+                </ButtonsContainer>
+            </StyledForm>
+        </PostFormContainer>
     );
 };
 

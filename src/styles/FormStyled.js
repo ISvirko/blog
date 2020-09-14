@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-export const PostFormContainer = styled.div`
-    margin-top: 130px;
-`;
-
 export const StyledButton = styled.button`
     background-color: ${({ theme }) => theme.secondaryLight};
     color: ${({ theme }) => theme.primaryLight};
@@ -29,8 +25,6 @@ export const StyledTextarea = styled.textarea`
 export const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
-    margin: 50px auto;
-    width: 800px;
 `;
 
 export const StyledInput = styled.input`
@@ -47,6 +41,6 @@ export const ButtonsContainer = styled.div`
     align-items: center;
     margin-bottom: 20px;
     padding: 4px;
-    width: 250px;
+    width: 220px;
     margin: 0 auto;
 `;

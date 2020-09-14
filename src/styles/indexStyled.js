@@ -1,13 +1,26 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 1000px;
+    width: 320px;
     margin: 0 auto;
+    @media (min-width: 768px) {
+        width: 740px;
+    }
+    @media (min-width: 1280px) {
+        width: 1200px;
+    }
 `;
 
 export const PostsContainer = styled.div`
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    @media (min-width: 768px) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media (min-width: 1280px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 `;
 
 export const StyledLink = styled.a`

@@ -34,7 +34,7 @@ const HomePage = ({ serverPosts }: PostsProps): JSX.Element => {
         setPostsToDisplay(posts);
     }, [posts]);
 
-    const reversedPosts = postsToDisplay && [...postsToDisplay].reverse().splice(0, 3);
+    const reversedPosts = postsToDisplay && [...postsToDisplay].reverse().splice(0, 4);
 
     return (
         <>
@@ -47,7 +47,7 @@ const HomePage = ({ serverPosts }: PostsProps): JSX.Element => {
                 </PostsContainer>
                 <LinkWrapper>
                     <Link href="/posts">
-                        <StyledLink>Read more</StyledLink>
+                        <StyledLink>All posts</StyledLink>
                     </Link>
                 </LinkWrapper>
             </Container>

@@ -91,6 +91,7 @@ const postsSlice = createSlice({
         });
 
         builder.addCase(editPost.fulfilled, (state: GenericState, { payload }: PayloadAction<IPost>) => {
+            //    const updatedPost = R.assocPath(['title', 'body'], [payload.title, payload.body], state.post);
             state.post = { ...state.post, title: payload.title, body: payload.body };
             state.loading = false;
         });

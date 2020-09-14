@@ -5,7 +5,7 @@ import { images } from '../helpers/images';
 import { formattedString } from '../helpers/formattedString';
 
 const StyledCard = styled.li`
-    width: 1000px;
+    width: 100%;
     max-height: 150px;
     overflow: hidden;
     padding: 20px;

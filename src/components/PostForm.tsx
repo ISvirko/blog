@@ -1,13 +1,8 @@
-import {
-    ButtonsContainer,
-    PostFormContainer,
-    StyledButton,
-    StyledForm,
-    StyledInput,
-    StyledTextarea,
-} from '../styles/FormStyled';
+import { ButtonsContainer, StyledButton, StyledForm, StyledInput, StyledTextarea } from '../styles/FormStyled';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { InnerContainer } from '../styles/postIdStyled';
+import { Container } from '../styles/indexStyled';
 
 interface IPostFormProps {
     titleToEdit?: string;
@@ -40,30 +35,32 @@ const PostForm = ({ handleSubmit, titleToEdit, bodyToEdit }: IPostFormProps): JS
     };
 
     return (
-        <PostFormContainer>
-            <StyledForm onSubmit={handleFormSubmit}>
-                <StyledInput
-                    name="title"
-                    placeholder="Title"
-                    value={title}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
-                />
-                <StyledTextarea
-                    name="body"
-                    placeholder="Body"
-                    rows={5}
-                    value={body}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBody(e.target.value)}
-                />
+        <Container>
+            <InnerContainer>
+                <StyledForm onSubmit={handleFormSubmit}>
+                    <StyledInput
+                        name="title"
+                        placeholder="Title"
+                        value={title}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
+                    />
+                    <StyledTextarea
+                        name="body"
+                        placeholder="Body"
+                        rows={5}
+                        value={body}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBody(e.target.value)}
+                    />
 
-                <ButtonsContainer>
-                    <StyledButton type="submit">{titleToEdit || bodyToEdit ? 'Save' : 'Add post'}</StyledButton>
-                    <StyledButton type="button" onClick={handleCancel}>
-                        Cancel
-                    </StyledButton>
-                </ButtonsContainer>
-            </StyledForm>
-        </PostFormContainer>
+                    <ButtonsContainer>
+                        <StyledButton type="submit">{titleToEdit || bodyToEdit ? 'Save' : 'Add post'}</StyledButton>
+                        <StyledButton type="button" onClick={handleCancel}>
+                            Cancel
+                        </StyledButton>
+                    </ButtonsContainer>
+                </StyledForm>
+            </InnerContainer>
+        </Container>
     );
 };
 

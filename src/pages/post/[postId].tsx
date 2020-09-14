@@ -18,10 +18,11 @@ import {
     ButtonsContainer,
     CommentContainer,
     Image,
-    MainContainer,
+    InnerContainer,
     PostContainer,
     StyledLink,
 } from '../../styles/postIdStyled';
+import { Container } from '../../styles/indexStyled';
 
 interface PostProps {
     serverPost: IPost | null;
@@ -82,54 +83,60 @@ const Post = ({ serverPost }: PostProps): JSX.Element => {
     }
 
     return (
-        <MainContainer>
-            <ButtonsContainer>
-                <StyledButton>
-                    <Link href={'/posts'}>
-                        <StyledLink>Back to all posts</StyledLink>
-                    </Link>
-                </StyledButton>
-                <ActionButtons>
-                    <StyledButton type="button" onClick={handleEdit}>
-                        Edit
+        <Container>
+            <InnerContainer>
+                <ButtonsContainer>
+                    <StyledButton>
+                        <Link href={'/posts'}>
+                            <StyledLink>Back to all posts</StyledLink>
+                        </Link>
                     </StyledButton>
-                    <StyledButton type="button" onClick={handleDelete}>
-                        Delete
-                    </StyledButton>
-                </ActionButtons>
-            </ButtonsContainer>
+                    <ActionButtons>
+                        <StyledButton type="button" onClick={handleEdit}>
+                            Edit
+                        </StyledButton>
+                        <StyledButton type="button" onClick={handleDelete}>
+                            Delete
+                        </StyledButton>
+                    </ActionButtons>
+                </ButtonsContainer>
 
-            <PostContainer>
-                <Image
-                    src={
-                        images[postToDisplay.id - 1] ||
-                        'https://waterfrontventures.co/wp-content/uploads/2017/07/dummy.jpg'
-                    }
-                    alt={postToDisplay.title}
-                />
-                <Block>
-                    <h1>{postToDisplay.title}</h1>
-                    <p>{postToDisplay.body}</p>
-                </Block>
-            </PostContainer>
+                <PostContainer>
+                    <Image
+                        src={
+                            images[postToDisplay.id - 1] ||
+                            'https://waterfrontventures.co/wp-content/uploads/2017/07/dummy.jpg'
+                        }
+                        alt={postToDisplay.title}
+                    />
+                    <Block>
+                        <h1>{postToDisplay.title}</h1>
+                        <p>{postToDisplay.body}</p>
+                    </Block>
+                </PostContainer>
 
-            {commented ? (
-                <CommentForm onSubmitComment={handleSubmitComment} setCommented={setCommented} />
-            ) : (
-                <StyledButton onClick={handleAddComment}>Comment on Post</StyledButton>
-            )}
+                {commented ? (
+                    <CommentForm onSubmitComment={handleSubmitComment} setCommented={setCommented} />
+                ) : (
+                    <StyledButton onClick={handleAddComment}>Comment on Post</StyledButton>
+                )}
 
-            {postToDisplay.comments && postToDisplay.comments.length === 0 ? <p>No comments yet</p> : <h4>Comments</h4>}
+                {postToDisplay.comments && postToDisplay.comments.length === 0 ? (
+                    <p>No comments yet</p>
+                ) : (
+                    <h4>Comments</h4>
+                )}
 
-            <ul>
-                {postToDisplay.comments &&
-                    postToDisplay.comments.map((comment) => (
-                        <li key={comment.id}>
-                            <CommentContainer>{comment.body}</CommentContainer>
-                        </li>
-                    ))}
-            </ul>
-        </MainContainer>
+                <ul>
+                    {postToDisplay.comments &&
+                        postToDisplay.comments.map((comment) => (
+                            <li key={comment.id}>
+                                <CommentContainer>{comment.body}</CommentContainer>
+                            </li>
+                        ))}
+                </ul>
+            </InnerContainer>
+        </Container>
     );
 };
 

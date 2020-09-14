@@ -22,7 +22,8 @@
         "src/pages/_document.tsx",
         "src/redux/postsOperations.ts",
         "src/redux/postsSlice.ts",
-        "src/styles/fornStyled.js"
+        "src/styles/fornStyled.js",
+        "src/helpers/useWindowWidth.js"
     ],
     "exclude": ["node_modules"]
 }

@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addPost, loadPosts } from '../../../redux/postsOperations';
 import PostForm from '../../../components/PostForm';
-import { PostFormContainer } from '../../../styles/FormStyled';
 
 const NewPost = (): JSX.Element => {
     const dispatch = useDispatch();
@@ -23,11 +22,7 @@ const NewPost = (): JSX.Element => {
         router.push('/posts');
     };
 
-    return (
-        <PostFormContainer>
-            <PostForm handleSubmit={handleSubmit} />
-        </PostFormContainer>
-    );
+    return <PostForm handleSubmit={handleSubmit} />;
 };
 
 export default NewPost;

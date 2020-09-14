@@ -43,7 +43,6 @@ export const getPostById = createAsyncThunk('posts/getPostById', async (id: stri
 export const editPost = createAsyncThunk('notes/editPost', async ({ title, body, id: postId }: IPost, thunkAPI) => {
     try {
         const res = await axios.put(`/posts/${postId}`, { title, body });
-        console.log(res.data);
         return res.data as IPost;
     } catch (error) {
         return thunkAPI.rejectWithValue({ error: error.message });

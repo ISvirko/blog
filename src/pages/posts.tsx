@@ -19,12 +19,6 @@ export const Title = styled.h2`
     margin-top: 100px;
 `;
 
-export const List = styled.ul`
-    // display: grid;
-    // grid-template-columns: repeat(3, 2fr);
-    // grid-gap: 20px;
-`;
-
 interface PostsProps {
     serverPosts: IPost[] | null;
 }
@@ -59,7 +53,7 @@ const Posts = ({ serverPosts }: PostsProps): JSX.Element => {
     return (
         <Container>
             <Title>Posts</Title>
-            <List>{reversedPosts && reversedPosts.map((post) => <PostListItem key={post.id} post={post} />)}</List>
+            <ul>{reversedPosts && reversedPosts.map((post) => <PostListItem key={post.id} post={post} />)}</ul>
         </Container>
     );
 };

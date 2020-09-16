@@ -5,7 +5,7 @@ import { images } from '../helpers/images';
 
 const StyledCard = styled.div`
     width: 300px;
-    height: 300px;
+    height: 310px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -21,6 +21,11 @@ const StyledImg = styled.img`
     margin-bottom: 20px;
     object-fit: cover;
     flex: 5;
+`;
+
+const LinkWrapper = styled.div`
+    width: 250px;
+    overflow: hidden;
 `;
 
 const StyledLink = styled.a`
@@ -42,9 +47,11 @@ const PostCard = ({ post }: PostCardProps): JSX.Element => {
                     src={images[post.id - 1] || 'https://waterfrontventures.co/wp-content/uploads/2017/07/dummy.jpg'}
                     alt={post.title}
                 />
-                <Link href={'./post/[postId]'} as={`/post/${post.id}`}>
-                    <StyledLink>{post.title}</StyledLink>
-                </Link>
+                <LinkWrapper>
+                    <Link href={'./post/[postId]'} as={`/post/${post.id}`}>
+                        <StyledLink>{post.title}</StyledLink>
+                    </Link>
+                </LinkWrapper>
             </StyledCard>
         </li>
     );
